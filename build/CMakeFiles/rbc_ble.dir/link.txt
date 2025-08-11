@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../lib/librbc_ble.a CMakeFiles/rbc_ble.dir/src/adv_types.cpp.o CMakeFiles/rbc_ble.dir/src/advertiser.cpp.o CMakeFiles/rbc_ble.dir/src/ble_mac_util.cpp.o CMakeFiles/rbc_ble.dir/src/ble_manager.cpp.o CMakeFiles/rbc_ble.dir/src/guide_graph_facade.cpp.o CMakeFiles/rbc_ble.dir/src/listener.cpp.o CMakeFiles/rbc_ble.dir/src/robot_info.cpp.o
+/usr/bin/ranlib ../lib/librbc_ble.a

@@ -1,0 +1,83 @@
+지금까지 모은 정보를 바탕으로 기능 요구 사항을 정리하였다.
+첨부 파일 바탕으로 전체 프로젝트 코드로 보여줘.
+main.cpp는 라이브러리 사용 예제로 만들자.
+로봇 간 시간 동기화는 별도 메커니즘으로 처리될것임.
+BleManager :
+  생성자 파라메터 : bool listen_ehco
+  private 속성
+    guide_graph : 운용 중 변경 가능성을 고려하여 setter를 통하여 수령.
+    나의 정보 = {RobotInfoTaskAdv, 근거리 계획 경로, 장거리 계획 경로}
+    map<robot_id, merged ListenInfo with lastest timestamp of 근거리 계획 경로 수신> mapNearbyRobot: 
+  Advertiser, Listener 생성
+  facade pattern 적용
+  hci0 초기화 및 상태 모니터링. 상태 정보는 advertise() 내부 진행에 관여
+  public: setAdvertiseInfo(전체 광고 정보 수신)
+    나의 정보에 저장
+    기본 광고 정보 유형으로 분할
+      핵심 기능 : list vertex를 바탕으로 hub-vertex여부에 따라 광고 내용(근거리 계획 경로, 장거리 계획 경로) 업데이트
+  public:
+    getNearbyRobotInfo()
+      5초 이내 수신 내역이 있는 로봇 통합 정보를 목록으로 반환
+  private : 
+    advertize() {
+      나의 정보를 광고 순서에 따라 Advertiser를 활용하여 지속 광고 수행
+    }
+    mergeRobotInfo() {
+      Listener를 통하여 수신된 정보를 로봇별로 통합 처리. mapNearbyRobot에 반영
+      listen_ehco 시 Log 출력에 반영
+    }
+
+기본 광고 정보 유형 {로봇 기본 정보 및 Task, 근거리 계획 경로, 장거리 계획 경로}
+각 기본 광고는 24byte 로 제한됨
+
+기본 광고 정보 유형     |  광고 주기   |  지속 시간   | 순서
+-------------------------------------------------------------
+로봇 기본 정보 및 Task  | 2초당 1회    | 333ms       | 1
+근거리 계획 경로        | 1초당 2회    | 333ms       | 2, 3, 5, 6
+장거리 계획 경로        | 2초당 1회    | 333ms       | 4
+
+
+BleManager와 Advertiser사이의 광고 정보 갱신 주기가 2초로 구축되어 있어
+근거리 정보갱신이 초당 4회 광고 및 갱신 가능토록 header를 첨부와 같이 수정하였으니
+참고하여 rbc 프로젝트 갱신해줘.
+
+검토 완료. 좋아요.
+이제 세부 내용 채워 나갑시다.
+이 부분(// 외부 상태를 BLE전용 구조체로 변환
+void BleManager::setAdvertiseInfo(const RobotFullState& fs) {
+    std::lock_guard<std::mutex> lock(mu_info_);
+    my_info_adv_.robot_id     = fs.robot_id;
+    my_info_adv_.max_speed    = fs.max_speed;
+    my_info_adv_.width        = fs.width;
+    my_info_adv_.length       = fs.length;
+    my_info_adv_.goal_vertex_id = fs.goal_vertex_id;
+    my_info_adv_.utc_task_time  = fs.utc_task_time;
+    // mac, crc 등도 할당 필요(실제 BLE앱에서)
+
+    // Local/GlobalPlan 변환 예시
+    for (int i = 0; i < 9; ++i) {
+        my_local_plan_.vertex_id[i]  = (i < fs.vertices.size()) ? fs.vertices[i] : Adv::MEANINGLESS_VERTEX;
+        my_global_plan_.vertex_id[i] = (i < fs.vertices.size()) ? fs.vertices[i] : Adv::MEANINGLESS_VERTEX;
+    }
+    my_local_plan_.robot_id  = fs.robot_id;
+    my_global_plan_.robot_id = fs.robot_id;
+    my_local_plan_.adv_type  = static_cast<uint8_t>(Adv::AdvType::LOCAL_PLAN);
+    my_global_plan_.adv_type = static_cast<uint8_t>(Adv::AdvType::GLOBAL_PLAN);
+}
+)에서     // mac, crc 등도 할당 필요(실제 BLE앱에서)
+ 에 대한 가이드
+
+
+ ########################################
+ 운용 로봇 내장 블루투스 장치는 hci0으로 고정 상태
+ 외부 노출 usb port에 장치는 확장 광고 가능 장치를 낮은 가능성으로 추가할 수 도 있다.
+ 최상은 목록 조회, 확장 광고 가능 판명, Factory Pattern적용, BleManager에서 advertise 방안 결정, 장치 오류 감지 시 전환까지 기능 구축인데...
+ 갈길이 멀군!
+ 이에 hci0를 hci1으로 내노트북에서의 테스트만을 위한 최소로 바꿀지 아니면 위 목록 중 어디까지는 먼저 준비하고 테스트할지 결정이 힘들다.
+
+
+########################################
+송출과 수신을 multi hci일 때 분리를 추천하니
+궁금한 것이 생김.
+송출, 수신이 한 디바이스에서 일어날때 성능에의 영향은?
+확장 광고 시 수신측도 확장광고 지원되어야하나?

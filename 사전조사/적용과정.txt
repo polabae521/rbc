@@ -1,0 +1,66 @@
+실 사용법
+bash
+sudo apt update
+sudo apt  install bluez
+sudo apt install qtbase5-dev libqt5dbus5 cmake g++
+cd build && cmake .. && make
+sudo ./ble_qt_ble_qt_dbus
+
+Ubuntu22, c++17, QTDBUS를 활용하여 BLE5.x 통신 시스템 구축.
+프로젝트 명 : robot_ble_communicator
+각 로봇은 255 Byte내 Advertising 데이타를 주기적으로 만들어 Advertise 한다.
+Advertising 데이타 : robot_id, 현재시각(UTC Timestamp), float (x, y, z, yaw, current_speed), 
+  task start time(UTC), guide graph id, goal vertex_id, path_length, path list of pair{vertex_id, arrival time} upto 40,
+  CRC(2byte)
+robot_id : 10 charaters
+guide graph id : long
+vertex_id : short
+arrival time : unsigned short. max 650초. 0.01 sec = 1
+
+Advertiser, Listener 구축
+Advertising 주기 : 2회/초
+실제 광고 오브젝트 등록(DBus Custom Advertising Object), 역직렬화/CRC 검증, 경로/상황 데이터 파싱 등 확장 로직 추가
+h file 과 cpp 파일로 짝지어 구성
+
+
+실행 이후 첫 로그 나올때까지 약 20초 소요. 그 이유는?
+
+
+robot_ble_communicator를 
+내 노트북과 로봇에 동글이를 장착 시키고 실행해보고 있다.
+각자 [ADV] Broadcasting: 232 bytes
+는 보이는데
+qDebug() << "[RECV]" << "robot_id" << id << "ts" << p.utc_now
+                     << "pos" << p.x << p.y << p.z << "yaw" << p.yaw
+                     << "speed" << p.current_speed
+                     << "goal" << p.goal_vertex_id << "paths" << int(p.path_length);
+
+이 로그는 안보인다.
+
+가장 기본부터 검증 과정을 안내해 줘
+
+
+
+robot에 장착된 보드 환경은 다음 []의 안과 같다.
+[
+  polaris3d@ubuntu:~$ lsb_release -a
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 24.10
+Release:	24.10
+Codename:	oracular
+polaris3d@ubuntu:~$ uname -a
+Linux ubuntu 6.11.0-1009-raspi #9-Ubuntu SMP PREEMPT_DYNAMIC Tue Feb 18 07:50:20 UTC 2025 aarch64 aarch64 aarch64 GNU/Linux
+]
+이 환경에서 실해되어야 하는 
+
+
+
+위 두 답변이 또 혼동되는군. 주기적 전송 안된다고 했다가, 변경되지 않은 데이터를 주기적으로 보낸다 하네...
+
+
+
+그렇다면 
+= bluetoothd[743]: src/advertising.c:parse_advertisement() Error parsing M..   263.083823
+이 에러의 원인이 빈 데이터를 보내기 때문?
+그래서 수신이 안되는 것? 광고 자체가 안되기에?

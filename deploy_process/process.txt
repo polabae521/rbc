@@ -1,0 +1,27 @@
+#hw spec
+$ uname -a
+Linux ubuntu 6.11.0-1015-raspi #15-Ubuntu SMP PREEMPT_DYNAMIC Thu Jun 26 13:43:54 UTC 2025 aarch64 aarch64 aarch64 GNU/Linux
+
+#os spec
+$ lsb_release -a
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 24.10
+Release:	24.10
+Codename:	oracular
+
+robot_ble_communicator 관련 소스코드 git으로 pull 하였다.
+이후 과정 가이드 바람
+
+
+안되어 가이드 따라하니 컴파일 에러
+컴파일 에러 해결하니 안되는 로그 [recv]안보이는 현상
+계속 맴도는 가이드를 주는구나. ㅠㅠㅠ
+
+
+위 데이터를 광고할건데 
+Q_PROPERTY(QVariantMap ManufacturerData READ manufacturerData NOTIFY manufacturerDataChanged) 이것을
+Q_PROPERTY(QVariant ManufacturerData READ manufacturerData NOTIFY manufacturerDataChanged) 이렇게 바꿔?
+아니면 추가하라는 의미?
+
+BLE와 설정 간 관계성은?

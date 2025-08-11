@@ -1,0 +1,23 @@
+robot에 장착된 보드 환경은 다음 []의 안과 같다.
+[
+  polaris3d@ubuntu:~$ lsb_release -a
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 24.10
+Release:	24.10
+Codename:	oracular
+polaris3d@ubuntu:~$ uname -a
+Linux ubuntu 6.11.0-1009-raspi #9-Ubuntu SMP PREEMPT_DYNAMIC Tue Feb 18 07:50:20 UTC 2025 aarch64 aarch64 aarch64 GNU/Linux
+]
+이 환경에서 실해되어야 하는 robot_ble_communicator의 make는 다음과 같다.
+cmake_minimum_required(VERSION 3.14)
+project(robot_ble_communicator)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_AUTOMOC ON)
+find_package(Qt5 REQUIRED COMPONENTS Core DBus)
+add_executable(robot_ble_communicator
+  src/main.cpp src/AdvPayload.cpp src/Advertiser.cpp src/Listener.cpp src/QtBleAdvertisement.cpp
+  src/AdvPayload.h src/Advertiser.h src/Listener.h src/QtBleAdvertisement.h)
+target_link_libraries(robot_ble_communicator Qt5::Core Qt5::DBus)
+
+가이드 바란다.

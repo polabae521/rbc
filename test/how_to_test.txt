@@ -1,0 +1,15 @@
+make clean; cmake ..;make -j5
+송신만
+bash
+../bin/rbc_test --role=send --ble_iface=hci1 --duration=30 --logtostderr=1
+
+수신만 (echo ON)
+bash
+../bin/rbc_test --role=recv --ble_iface=hci0 --duration=30 --listen_echo=true --logtostderr=1
+
+송신+수신 동시
+bash
+../bin/rbc_test --role=both --ble_iface=hci1 --duration=60 --logtostderr=1
+
+ps -ef | grep rbc_test
+kill -9 $(pgrep -f rbc_test)
