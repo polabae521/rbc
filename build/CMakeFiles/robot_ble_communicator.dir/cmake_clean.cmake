@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
-  "../bin/robot_ble_communicator"
-  "../bin/robot_ble_communicator.pdb"
+  "/workspace/bin/robot_ble_communicator"
+  "/workspace/bin/robot_ble_communicator.pdb"
+  "CMakeFiles/robot_ble_communicator.dir/link.d"
   "CMakeFiles/robot_ble_communicator.dir/test/main.cpp.o"
   "CMakeFiles/robot_ble_communicator.dir/test/main.cpp.o.d"
 )

@@ -1,10 +1,13 @@
 #include "ble_mac_util.h"
-#include <cstring>
-#include <array>
+#include <cstdint>
 #include <fstream>
 #include <sstream>
-#include <iomanip>
-#include <stdexcept>
+#include <glog/logging.h>
+#include <sys/ioctl.h>
+#include <net/if.h>
+#include <unistd.h>
+#include <cstring>
+#include <array>
 
 /**
  * 시스템에서 hci 인터페이스의 MAC을 안전히 읽는 예시.

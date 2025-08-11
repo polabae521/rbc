@@ -1,5 +1,6 @@
-CMakeFiles/rbc_ble.dir/src/ble_mac_util.cpp.o: \
-  /workspace/src/ble_mac_util.cpp /workspace/inc/ble_mac_util.h \
+CMakeFiles/robot_ble_communicator.dir/test/main.cpp.o: \
+  /workspace/test/main.cpp /workspace/inc/ble_manager.h \
+  /workspace/inc/advertiser.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/string \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/requires_hosted.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/x86_64-linux-gnu/c++/14/bits/c++config.h \
@@ -142,22 +143,9 @@ CMakeFiles/rbc_ble.dir/src/ble_mac_util.cpp.o: \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/uses_allocator.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/uses_allocator_args.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/tuple \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/array \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/compare \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/cstdint \
-  /usr/lib/llvm-20/lib/clang/20/include/stdint.h /usr/include/stdint.h \
-  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
-  /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/fstream \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/istream \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/ios \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/exception \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/exception_ptr.h \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/cxxabi_init_exception.h \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/typeinfo \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/nested_exception.h \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/ios_base.h \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/ext/atomicity.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/thread \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/std_thread.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/unique_ptr.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/x86_64-linux-gnu/c++/14/bits/gthr.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/x86_64-linux-gnu/c++/14/bits/gthr-default.h \
   /usr/include/pthread.h /usr/include/sched.h \
@@ -180,12 +168,64 @@ CMakeFiles/rbc_ble.dir/src/ble_mac_util.cpp.o: \
   /usr/include/x86_64-linux-gnu/bits/setjmp.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h \
   /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/this_thread_sleep.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/chrono.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/ratio \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/cstdint \
+  /usr/lib/llvm-20/lib/clang/20/include/stdint.h /usr/include/stdint.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+  /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/limits \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/ctime \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/parse_numbers.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/atomic \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/atomic_base.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/atomic_lockfree_defines.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/functional \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/std_function.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/typeinfo \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/unordered_map \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/unordered_map.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/hashtable.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/hashtable_policy.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/ext/aligned_buffer.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/enable_special_members.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/node_handle.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/erase_if.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/vector \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/stl_uninitialized.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/stl_vector.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/stl_bvector.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/vector.tcc \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/array \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/compare \
+  /workspace/inc/listener.h /workspace/inc/adv_types.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/cstring \
+  /usr/include/string.h /usr/include/strings.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/mutex \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/std_mutex.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/unique_lock.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/x86_64-linux-gnu/c++/14/bits/error_constants.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/ext/atomicity.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/x86_64-linux-gnu/c++/14/bits/atomic_word.h \
   /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/map \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/stl_tree.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/stl_map.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/stl_multimap.h \
+  /usr/include/gflags/gflags.h /usr/include/gflags/gflags_declare.h \
+  /usr/include/gflags/gflags_gflags.h /usr/include/glog/logging.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/chrono \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/ostream \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/ios \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/exception \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/exception_ptr.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/cxxabi_init_exception.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/nested_exception.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/ios_base.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/locale_classes.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/locale_classes.tcc \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/system_error \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/x86_64-linux-gnu/c++/14/bits/error_constants.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/stdexcept \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/streambuf \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/streambuf.tcc \
@@ -199,60 +239,43 @@ CMakeFiles/rbc_ble.dir/src/ble_mac_util.cpp.o: \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/x86_64-linux-gnu/c++/14/bits/ctype_inline.h \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/locale_facets.tcc \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/basic_ios.tcc \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/ostream \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/ostream.tcc \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/istream.tcc \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/codecvt.h \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/x86_64-linux-gnu/c++/14/bits/basic_file.h \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/x86_64-linux-gnu/c++/14/bits/c++io.h \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/fstream.tcc \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/sstream \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/istream \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/istream.tcc \
   /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/sstream.tcc \
-  /usr/include/glog/logging.h \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/chrono \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/chrono.h \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/ratio \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/limits \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/ctime \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/parse_numbers.h \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/cstring \
-  /usr/include/string.h /usr/include/strings.h /usr/include/unistd.h \
-  /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
+  /usr/include/unistd.h /usr/include/x86_64-linux-gnu/bits/posix_opt.h \
   /usr/include/x86_64-linux-gnu/bits/environments.h \
   /usr/include/x86_64-linux-gnu/bits/confname.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
   /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
   /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
-  /usr/include/linux/close_range.h \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/vector \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/stl_uninitialized.h \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/stl_vector.h \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/stl_bvector.h \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/vector.tcc \
-  /usr/include/glog/platform.h /usr/include/glog/export.h \
+  /usr/include/linux/close_range.h /usr/include/glog/platform.h \
+  /usr/include/glog/export.h \
   /usr/lib/llvm-20/lib/clang/20/include/inttypes.h \
-  /usr/include/inttypes.h /usr/include/gflags/gflags.h \
-  /usr/include/gflags/gflags_declare.h \
-  /usr/include/gflags/gflags_gflags.h \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/atomic \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/atomic_base.h \
-  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/bits/atomic_lockfree_defines.h \
-  /usr/include/glog/log_severity.h /usr/include/glog/vlog_is_on.h \
-  /usr/include/x86_64-linux-gnu/sys/ioctl.h \
-  /usr/include/x86_64-linux-gnu/bits/ioctls.h \
-  /usr/include/x86_64-linux-gnu/asm/ioctls.h \
-  /usr/include/asm-generic/ioctls.h /usr/include/linux/ioctl.h \
-  /usr/include/x86_64-linux-gnu/asm/ioctl.h \
-  /usr/include/asm-generic/ioctl.h \
-  /usr/include/x86_64-linux-gnu/bits/ioctl-types.h \
-  /usr/include/x86_64-linux-gnu/sys/ttydefaults.h /usr/include/net/if.h \
-  /usr/include/x86_64-linux-gnu/sys/socket.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_iovec.h \
-  /usr/include/x86_64-linux-gnu/bits/socket.h \
-  /usr/include/x86_64-linux-gnu/bits/socket_type.h \
-  /usr/include/x86_64-linux-gnu/bits/sockaddr.h \
-  /usr/include/x86_64-linux-gnu/asm/socket.h \
-  /usr/include/asm-generic/socket.h \
-  /usr/include/x86_64-linux-gnu/asm/sockios.h \
-  /usr/include/asm-generic/sockios.h \
-  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h
+  /usr/include/inttypes.h /usr/include/glog/log_severity.h \
+  /usr/include/glog/vlog_is_on.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/csignal \
+  /usr/include/signal.h \
+  /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
+  /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
+  /usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/siginfo_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h \
+  /usr/include/x86_64-linux-gnu/bits/siginfo-arch.h \
+  /usr/include/x86_64-linux-gnu/bits/siginfo-consts.h \
+  /usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h \
+  /usr/include/x86_64-linux-gnu/bits/types/sigval_t.h \
+  /usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h \
+  /usr/include/x86_64-linux-gnu/bits/sigevent-consts.h \
+  /usr/include/x86_64-linux-gnu/bits/sigaction.h \
+  /usr/include/x86_64-linux-gnu/bits/sigcontext.h \
+  /usr/include/x86_64-linux-gnu/bits/types/stack_t.h \
+  /usr/include/x86_64-linux-gnu/sys/ucontext.h \
+  /usr/include/x86_64-linux-gnu/bits/sigstack.h \
+  /usr/include/x86_64-linux-gnu/bits/sigstksz.h \
+  /usr/include/x86_64-linux-gnu/bits/ss_flags.h \
+  /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
+  /usr/include/x86_64-linux-gnu/bits/sigthread.h \
+  /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
+  /usr/lib/gcc/x86_64-linux-gnu/14/../../../../include/c++/14/iostream

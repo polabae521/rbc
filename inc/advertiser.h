@@ -19,4 +19,6 @@ private:
     void advertiseLoop(uint32_t interval_ms);
     bool sendAdvPacket(const std::vector<uint8_t>& data);
     bool set_advertising_data(int sock, const uint8_t* data, size_t len);
+    bool enableBleAdvertising();
+    void disableBleAdvertising();
 };

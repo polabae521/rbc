@@ -1,0 +1,21 @@
+I20250811 09:47:00.218257  4112 advertiser.cpp:24] [BLE-ADV] Started on hci0
+I20250811 09:47:00.218362  4112 listener.cpp:84] [BLE-LISTEN] Started on hci0
+I20250811 09:47:00.218367  4112 main.cpp:52] [SENDER] BLE started on hci0
+E20250811 09:47:00.218411  4113 advertiser.cpp:85] [BLE-ADV] No hci device: hci0
+E20250811 09:47:00.218457  4113 advertiser.cpp:42] [BLE-ADV] Failed to enable BLE advertising
+E20250811 09:47:00.218520  4114 listener.cpp:26] [BLE-LISTEN] No hci device: hci0
+I20250811 09:47:00.718461  4112 main.cpp:65] Main loop: BLE working, elapsed 0s
+I20250811 09:47:03.219405  4112 main.cpp:65] Main loop: BLE working, elapsed 3s
+*** Aborted at 1754905625 (unix time) try "date -d @1754905625" if you are using GNU date ***
+PC: @                0x0 (unknown)
+*** SIGTERM (@0x3e80000100e) received by PID 4112 (TID 0x7f8017129e80) from PID 4110; stack trace: ***
+    @     0x7f801779b206 (unknown)
+    @     0x7f80171ce810 (unknown)
+    @     0x7f80172346e2 (unknown)
+    @     0x7f80172281e3 (unknown)
+    @     0x7f801727e032 clock_nanosleep
+    @     0x7f801728bd57 nanosleep
+    @     0x55f91818bacb main
+    @     0x7f80171b3338 (unknown)
+    @     0x7f80171b33fb __libc_start_main
+    @     0x55f91818b635 _start

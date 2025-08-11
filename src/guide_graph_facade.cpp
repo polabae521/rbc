@@ -1,18 +1,22 @@
 // guide_graph_facade.cpp
 #include "guide_graph_facade.h"
+#include <glog/logging.h>
 
-void GuideGraphFacade::setGuideGraph(vom::GuideGraph g) {
-    guide_graph_ = g;
+GuideGraphFacade::GuideGraphFacade() : graph_impl_(nullptr) {
+    LOG(INFO) << "GuideGraphFacade created";
 }
 
-bool GuideGraphFacade::isHubVertex(int vid) {
-    auto vert = guide_graph_.getVertex(vid);
-    return vert && true/*vert->isHub()*/;
+GuideGraphFacade::~GuideGraphFacade() {
+    LOG(INFO) << "GuideGraphFacade destroyed";
 }
 
-std::vector<int> GuideGraphFacade::getAllVertexIds() {
-    std::vector<int> vids;
-    for (const auto& kv : guide_graph_.getVerticesMap())
-        vids.push_back(kv.first);
-    return vids;
+void GuideGraphFacade::loadGraph(const std::string& file) {
+    LOG(INFO) << "Loading graph from: " << file;
+    // Placeholder implementation
+}
+
+std::vector<int> GuideGraphFacade::getPath(int from, int to) const {
+    LOG(INFO) << "Getting path from " << from << " to " << to;
+    // Placeholder implementation
+    return std::vector<int>{from, to};
 }
