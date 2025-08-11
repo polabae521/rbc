@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "../lib/librbc_ble.a"
-  "../lib/librbc_ble.pdb"
+  "/workspace/lib/librbc_ble.a"
+  "/workspace/lib/librbc_ble.pdb"
   "CMakeFiles/rbc_ble.dir/src/adv_types.cpp.o"
   "CMakeFiles/rbc_ble.dir/src/adv_types.cpp.o.d"
   "CMakeFiles/rbc_ble.dir/src/advertiser.cpp.o"

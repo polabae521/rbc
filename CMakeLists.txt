@@ -10,9 +10,6 @@ add_compile_options(-Wall -Wextra -O2)
 
 include_directories(
     ${CMAKE_SOURCE_DIR}/inc
-    ../vom/src/model/graph
-    ../vsys/inc
-    ../redisdb/inc
 )
 
 find_package(glog REQUIRED)
@@ -28,14 +25,21 @@ target_link_libraries(rbc_ble bluetooth pthread gflags glog::glog)
 add_executable(rbc_test test/main.cpp)
 target_link_libraries(rbc_test
     rbc_ble
-    ${CMAKE_CURRENT_SOURCE_DIR}/../vom/lib/libEreon_ObjectModel.a
-    ${CMAKE_CURRENT_SOURCE_DIR}/../vsys/lib/libvsys.a
-    dbus-1
     bluetooth
     pthread
     gflags
     glog::glog
 )
 
-install(TARGETS rbc_test RUNTIME DESTINATION bin)
+# BLE 통신 테스트용 실행 파일
+add_executable(robot_ble_communicator test/main.cpp)
+target_link_libraries(robot_ble_communicator
+    rbc_ble
+    bluetooth
+    pthread
+    gflags
+    glog::glog
+)
+
+install(TARGETS rbc_test robot_ble_communicator RUNTIME DESTINATION bin)
 install(TARGETS rbc_ble ARCHIVE DESTINATION lib)

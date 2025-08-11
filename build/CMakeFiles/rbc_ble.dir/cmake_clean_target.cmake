@@ -1,3 +1,3 @@
 file(REMOVE_RECURSE
-  "../lib/librbc_ble.a"
+  "/workspace/lib/librbc_ble.a"
 )

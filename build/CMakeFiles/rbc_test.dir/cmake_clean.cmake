@@ -1,6 +1,7 @@
 file(REMOVE_RECURSE
-  "../bin/rbc_test"
-  "../bin/rbc_test.pdb"
+  "/workspace/bin/rbc_test"
+  "/workspace/bin/rbc_test.pdb"
+  "CMakeFiles/rbc_test.dir/link.d"
   "CMakeFiles/rbc_test.dir/test/main.cpp.o"
   "CMakeFiles/rbc_test.dir/test/main.cpp.o.d"
 )
